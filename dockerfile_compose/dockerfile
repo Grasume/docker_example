@@ -1,0 +1,6 @@
+FROM ubuntu:focal
+
+LABEL maintainer="Stormie"
+USER root
+RUN apt-get update -y
+RUN apt-get install wget curl dumb-init -y
