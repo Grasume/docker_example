@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  traefik:
+    container_name: traefik
+    image: "traefik:latest"
+    command:
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --providers.docker=true
+      - --log.level=ERROR
+      - --api.insecure
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.traefik.rule=Host(`dashboard.docker.localhost`)
+      - traefik.http.routers.traefik.entrypoints=web
+      - traefik.http.services.traefik.loadBalancer.server.port=8080
+      - traefik.http.routers.http-catchall.entrypoints=web
+
+
+  whoami:
+    image: "traefik/whoami"
+    container_name: "traefik-whoami"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)
+      - traefik.http.routers.whoami.entrypoints=web
