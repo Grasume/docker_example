@@ -31,3 +31,7 @@ services:
       - traefik.enable=true
       - traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)
       - traefik.http.routers.whoami.entrypoints=web
+
+networks:
+  docker_services:
+    external: true
