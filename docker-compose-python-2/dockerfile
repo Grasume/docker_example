@@ -1,0 +1,11 @@
+FROM ubuntu:20.04
+
+RUN apt-get update && install -y mkvtoolnix mkvtoolnix-gui ffmpeg
+
+FROM python:3.8-alpine
+
+COPY . ./app
+WORKDIR /app
+RUN pip3 install -r requirements.txt
+
+CMD ["ls"]
