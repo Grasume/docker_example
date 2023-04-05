@@ -1,0 +1,12 @@
+#FROM python:3.10
+FROM python:3.8-slim
+
+WORKDIR /usr/src/app
+COPY . .
+
+RUN /usr/local/bin/python -m pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
+
+WORKDIR /usr/src/app/python
+ENTRYPOINT [ "python3" ]
+CMD [ "app.py"]

@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  python:
+    build: .
+    restart: unless-stopped
+    ports:
+      - 8000:8000
+    extra_hosts:
+      - "dockerhost:192.168.10.211"
+    environment:
+      - USER=${USER}
+      - IP_ADDRESS=${IP_ADDRESS}
+    volumes:
+      - ./python:/usr/src/app/python/
+      - /var/run/docker.sock:/var/run/docker.sock

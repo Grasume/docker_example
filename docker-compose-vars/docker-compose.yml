@@ -1,0 +1,9 @@
+services:
+  whoami:
+    image: traefik/whoami:v1.8
+    container_name: "whoami"
+    restart: always
+    environment:
+      - deploy_port="90"
+    ports:
+      - ${deploy_port}:${deploy_port}

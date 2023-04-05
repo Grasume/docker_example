@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+
+
+ mariadb:
+  image: mariadb:10.3.9
+  container_name: pantofionline-mariadb
+  restart: 'on-failure'
+  environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+  ports:
+      - 33501:3306
