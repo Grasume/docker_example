@@ -11,20 +11,18 @@ services:
       - --log.level=ERROR
       - --api.insecure
       - --entryPoints.web.forwardedHeaders.insecure
-    # ports:
-    #   - "80:80"
-    #   - "443:443"
-    #   - "8080:8080"
-    network_mode: "host"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     labels:
       - traefik.enable=true
-     # - traefik.http.routers.traefik.rule=Host(`dashboard.docker.localhost`)
+      - traefik.http.routers.traefik.rule=Host(`dashboard.docker.localhost`)
       - traefik.http.routers.traefik.entrypoints=web
       - traefik.http.services.traefik.loadBalancer.server.port=8080
       - traefik.http.routers.http-catchall.entrypoints=web
-
 
   whoami:
     image: "traefik/whoami"
@@ -35,5 +33,5 @@ services:
       - traefik.http.routers.whoami.entrypoints=web
 
 networks:
-  host:
+  docker_services:
     external: true
