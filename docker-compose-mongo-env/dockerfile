@@ -1,0 +1,5 @@
+FROM mongo:latest
+RUN apt-get update && apt-get install -y
+COPY ./resources/mongodb/mongod.conf /etc/mongod.conf
+COPY ./resources/mongodb/init-scripts/mongo-init.js /docker-entrypoint-initdb.d
+CMD ["mongod", "--config", "/etc/mongod.conf"]
