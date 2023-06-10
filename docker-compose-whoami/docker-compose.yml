@@ -7,6 +7,8 @@ services:
       - traefik.enable=true
       - traefik.http.routers.whoami.rule=Host(`whoamitest.home.arpa`)
       - traefik.http.routers.whoami.entrypoints=web
+    networks:
+      - docker_services
 
 networks:
   docker_services:
