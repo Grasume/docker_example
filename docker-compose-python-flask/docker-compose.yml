@@ -4,5 +4,7 @@ services:
     build: .
     ports:
       - "8000:5000"
+    volumes:
+      - ./python:/usr/src/app/python/
   redis:
     image: "redis:alpine"

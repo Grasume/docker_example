@@ -5,6 +5,10 @@ services:
     image: itzg/minecraft-server
     environment:
       EULA: "true"
+      VERSION: 1.19.2 #Specify MC Version
+      FORGE_VERSION: 43.2.14 #Specify Forge Version
+      DIFFICULTY: hard
+
     ports:
       - "25565:25565"
     volumes:
