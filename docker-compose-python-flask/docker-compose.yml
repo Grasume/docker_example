@@ -1,10 +1,9 @@
-version: "3.9"
 services:
   web:
     build: .
     ports:
       - "8000:5000"
     volumes:
-      - ./python:/usr/src/app/python/
+      - ./:/usr/src/app/python/
   redis:
     image: "redis:alpine"
