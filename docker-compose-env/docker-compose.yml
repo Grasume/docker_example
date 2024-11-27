@@ -1,12 +1,13 @@
-version: '3'
-
 services:
   whoami:
-    environment:
-      PORT_PUBLIC: 8082
-    command:
+    #environment:
+    #  PORT_PUBLIC: 8082
+    #command:
       # It tells whoami to start listening on 8082 instead of 80
-      - '--port="$PORT_PUBLIC"'
+      #- '--port="$PORT_PUBLIC"'
+    volumes:
+    #- ./test:/test
+      - ./test2:/test2 
     image: "traefik/whoami"
     container_name: "whoami"
     restart: always
