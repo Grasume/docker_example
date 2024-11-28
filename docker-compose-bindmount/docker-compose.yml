@@ -2,7 +2,7 @@ services:
   test:
     image: ubuntu:noble
     volumes:
-      - ./test/file.text:/test/file.text
+      - ./test/file.text:/test/test.txt
       - ./test2/:/test2/
     command:
       - sleep 
